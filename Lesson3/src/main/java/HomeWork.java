@@ -16,7 +16,7 @@ public class HomeWork {
         Random random = new Random();
         restOfWork(random.nextInt(28800 + 1));
         table();
-        int temp[] = {};
+        int temp[] = {1, 2, 3, 5, 6};
         System.out.println("Cреднее арифметическое :" + GetMeanArrayValue(temp));
         System.out.println("Наибольшее число :" + GetMaxArrayValue(temp));
     }
@@ -114,7 +114,7 @@ public class HomeWork {
             for (int i : arr) {
                 sum += i;
             }
-            return sum / arr.length;
+            return (float) (sum / arr.length);
         }
         return 0;
     }
