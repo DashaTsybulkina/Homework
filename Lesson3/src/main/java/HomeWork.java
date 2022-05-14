@@ -1,22 +1,24 @@
 import java.util.Random;
 import java.util.Scanner;
 
+import static java.lang.Math.abs;
+
 public class HomeWork {
     public static void main(String[] args) {
         printABC();
         int n = inputInt();
         evenNumber(n);
-        System.out.println("Введите числа для проверки на максимальное число: ");
+        System.out.println("Введите числа для проверки на минималное: ");
         float a = inputFloat();
         float b = inputFloat();
         float c = inputFloat();
-        System.out.println("Наибольшее из чисел " + a + " " + b + " " + c + " : " + maxNumber(a, b, c));
+        System.out.println("Наименьшее по модулю из чисел " + a + " " + b + " " + c + " : " + minNumber(a, b, c));
         Random random = new Random();
-        restOfWork(random.nextInt(28800));
+        restOfWork(random.nextInt(28800 + 1));
         table();
-        int temp[] = {1, 2, 3, 4, 5};
-        System.out.println("Cреднее арифметическое :" + meanArray(temp));
-        System.out.println("Наибольшее число :" + maxArray(temp));
+        int temp[] = {1, 2, 3, 5, 6};
+        System.out.println("Cреднее арифметическое :" + GetMeanArrayValue(temp));
+        System.out.println("Наибольшее число :" + GetMaxArrayValue(temp));
     }
 
     private static float inputFloat() {
@@ -31,7 +33,7 @@ public class HomeWork {
                 System.err.println("Вы ввели неверные данные, повторите  ввод");
                 isCorrect = false;
             }
-            if (isCorrect && (n > Float.MAX_VALUE)) {
+            if (isCorrect && ((n > Float.MAX_VALUE) || (n < Float.MIN_VALUE))) {
                 System.out.println("Вы ввели неверные данные, повторите  ввод");
                 isCorrect = false;
             }
@@ -76,20 +78,22 @@ public class HomeWork {
         }
     }
 
-    private static float maxNumber(float a, float b, float c) {
-        float max = a;
-        if (max < b) {
-            max = b;
+    //3) Меньшее по модулю число
+//Создать программу, которая будет выводить на экран меньшее по модулю из трёх введённых
+// пользователем вещественных чисел с консоли.
+    private static float minNumber(float a, float b, float c) {
+        float min = abs(a);
+        if (min > abs(b)) {
+            min = abs(b);
         }
-        if (max < c) {
-            max = c;
+        if (min > abs(c)) {
+            min = abs(c);
         }
-        return max;
+        return min;
     }
 
     private static void restOfWork(int restSec) {
-        float restHour = (float) restSec / 3600;
-        System.out.println("Осталось от " + (int) restHour + " до " + ((int) restHour + 1));
+        System.out.println("Осталось " + restSec / 3600);
     }
 
     private static void table() {
@@ -104,22 +108,27 @@ public class HomeWork {
         System.out.println("boolean|   х   |\t х   |\t х  |\t х  |\t х  |\t х   |\t х    |\t  т   ");
     }
 
-    private static float meanArray(int[] arr) {
-        int sum = 0;
-        for (int i : arr) {
-            sum += i;
+    private static float GetMeanArrayValue(int[] arr) {
+        if (arr.length != 0) {
+            int sum = 0;
+            for (int i : arr) {
+                sum += i;
+            }
+            return (float) (sum / arr.length);
         }
-        return sum / arr.length;
+        return 0;
     }
 
-    public static int maxArray(int[] arr) {
-        int max = arr[0];
-        for (int i : arr) {
-            if (max < i) {
-                max = i;
+    public static int GetMaxArrayValue(int[] arr) {
+        if (arr.length != 0) {
+            int max = arr[0];
+            for (int i : arr) {
+                if (max < i) {
+                    max = i;
+                }
             }
-            ;
+            return max;
         }
-        return max;
+        return 0;
     }
 }
