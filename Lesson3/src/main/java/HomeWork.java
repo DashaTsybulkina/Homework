@@ -7,18 +7,18 @@ public class HomeWork {
     public static void main(String[] args) {
         printABC();
         int n = inputInt();
-        evenNumber(n);
+        printIsEvenNumber(n);
         System.out.println("Введите числа для проверки на минималное: ");
         float a = inputFloat();
         float b = inputFloat();
         float c = inputFloat();
-        System.out.println("Наименьшее по модулю из чисел " + a + " " + b + " " + c + " : " + minNumber(a, b, c));
+        System.out.println("Наименьшее по модулю из чисел " + a + " " + b + " " + c + " : " + getMinNumber(a, b, c));
         Random random = new Random();
         restOfWork(random.nextInt(28800 + 1));
         table();
         int temp[] = {1, 2, 3, 5, 6};
-        System.out.println("Cреднее арифметическое :" + GetMeanArrayValue(temp));
-        System.out.println("Наибольшее число :" + GetMaxArrayValue(temp));
+        System.out.println("Cреднее арифметическое :" + getMeanArrayValue(temp));
+        System.out.println("Наибольшее число :" + getMaxArrayValue(temp));
     }
 
     private static float inputFloat() {
@@ -70,7 +70,7 @@ public class HomeWork {
         System.out.println();
     }
 
-    private static void evenNumber(int number) {
+    private static void printIsEvenNumber(int number) {
         if (number % 2 == 0) {
             System.out.println("Число " + number + " чётное");
         } else {
@@ -81,7 +81,7 @@ public class HomeWork {
     //3) Меньшее по модулю число
 //Создать программу, которая будет выводить на экран меньшее по модулю из трёх введённых
 // пользователем вещественных чисел с консоли.
-    private static float minNumber(float a, float b, float c) {
+    private static float getMinNumber(float a, float b, float c) {
         float min = abs(a);
         if (min > abs(b)) {
             min = abs(b);
@@ -108,7 +108,7 @@ public class HomeWork {
         System.out.println("boolean|   х   |\t х   |\t х  |\t х  |\t х  |\t х   |\t х    |\t  т   ");
     }
 
-    private static float GetMeanArrayValue(int[] arr) {
+    private static float getMeanArrayValue(int[] arr) {
         if (arr.length != 0) {
             int sum = 0;
             for (int i : arr) {
@@ -119,7 +119,7 @@ public class HomeWork {
         return 0;
     }
 
-    public static int GetMaxArrayValue(int[] arr) {
+    public static int getMaxArrayValue(int[] arr) {
         if (arr.length != 0) {
             int max = arr[0];
             for (int i : arr) {
