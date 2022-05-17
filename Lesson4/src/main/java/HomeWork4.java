@@ -63,44 +63,40 @@ public class HomeWork4 {
 
 
 //4) Дано 2 числа, день и месяц рождения. Написать программу, которая определяет знак зодиака человека.
-        day = inputInt(1, 31);
         int month = inputInt(1, 12);
+        if (month == 2) {
+            day = inputInt(1, 31);
+        } else if ((month <= 7 && month % 2 == 1) || (month >= 8 && month % 2 == 0)) {
+            day = inputInt(1, 31);
+        } else {
+            day = inputInt(1, 30);
+        }
         float data = month + (float) day / 100;
         String sign = "";
         if (data >= 1.21) {
             sign = "Водолей";
-        }
-        if (data >= 2.20) {
+        } else if (data >= 2.20) {
             sign = "Рыбы";
-        }
-        if (data >= 3.21) {
+        } else if
+        (data >= 3.21) {
             sign = "Овен";
-        }
-        if (data >= 4.21) {
+        } else if (data >= 4.21) {
             sign = "Телец";
-        }
-        if (data >= 5.22) {
+        } else if (data >= 5.22) {
             sign = "Близнецы";
-        }
-        if (data >= 6.22) {
+        } else if (data >= 6.22) {
             sign = "Рак";
-        }
-        if (data >= 7.23) {
+        } else if (data >= 7.23) {
             sign = "Лев";
-        }
-        if (data >= 8.22) {
+        } else if (data >= 8.22) {
             sign = "Дева";
-        }
-        if (data >= 9.24) {
+        } else if (data >= 9.24) {
             sign = "Весы";
-        }
-        if (data >= 10.24) {
+        } else if (data >= 10.24) {
             sign = "Скорпион";
-        }
-        if (data >= 11.23) {
+        } else if (data >= 11.23) {
             sign = "Стрелец";
-        }
-        if ((data >= 12.23) || (data <= 1.20)) {
+        } else if ((data >= 12.23) || (data <= 1.20)) {
             sign = "Козерог";
         }
         System.out.println("Ваш знак задика: " + sign);
@@ -186,7 +182,7 @@ public class HomeWork4 {
     public static int calculateCountOfOddElementsInMatrix(int[] ints) {
         int count = 0;
         for (int i = 0; i < ints.length; i++) {
-            if (ints[i] % 2 == 1) {
+            if (ints[i] % 2 != 1) {
                 count++;
             }
         }
@@ -204,8 +200,9 @@ public class HomeWork4 {
      */
     public static void countDevs(int count) {
         String devs = "";
-        if ((count < 11) || (count > 14)) {
-            int lastNumber = count % 10;
+        int lastNumber = count % 100;
+        if ((lastNumber < 11) || (lastNumber > 14)) {
+            lastNumber = count % 10;
             if (lastNumber == 2) {
                 devs = "программист";
             }
@@ -249,7 +246,6 @@ public class HomeWork4 {
                 System.out.print(i + " ");
             }
         }
-
     }
 
     public static boolean isPrime(int n) {
@@ -259,7 +255,7 @@ public class HomeWork4 {
         if (n <= 1 || n % 2 == 0 || n % 3 == 0) {
             return false;
         }
-        for (int i = 5; i * i < n; i += 6) {
+        for (int i = 5; i * i <= n; i += 6) {
             if (n % i == 0 || n % (i + 2) == 0) {
                 return false;
             }
