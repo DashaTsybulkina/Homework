@@ -1,7 +1,7 @@
 package car;
 
 public class Engine {
-    private boolean isStart = false;
+    private boolean isStart;
     private String typeEngine;
     private final double volume;
 

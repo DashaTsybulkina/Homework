@@ -2,7 +2,7 @@ package car;
 
 public class GasTank {
     private double countGas;
-    private int maxVolume = 0;
+    private final int maxVolume;
 
     public GasTank(int maxVolume) {
         this.maxVolume = maxVolume;

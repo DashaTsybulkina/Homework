@@ -1,16 +1,24 @@
 package military_office;
 
-public class MIlitaryOffice {
-    private Person[] PersonRegistry;
+public class MilitaryOffice {
+    private Person[] personRegistry;
 
-    public MIlitaryOffice(Person[] personRegistry) {
-        PersonRegistry = personRegistry;
+    public MilitaryOffice(Person[] personRegistry) {
+        this.personRegistry = personRegistry;
+    }
+
+    private boolean isFitPerson(Person person) {
+        boolean isFit = false;
+        if (person.getAge() >= 18 && person.getAge() <= 27 && person.getGender() == 'm') {
+            isFit = true;
+        }
+        return isFit;
     }
 
     public void findFitPerson() {
         System.out.println("Годные к службе:");
-        for (Person person : PersonRegistry) {
-            if (person.getAge() >= 18 && person.getAge() <= 27 && person.getGender() == 'm') {
+        for (Person person : personRegistry) {
+            if (isFitPerson(person)) {
                 System.out.println(person);
             }
         }
@@ -18,8 +26,8 @@ public class MIlitaryOffice {
 
     public void findPersonForCity(String nameCity) {
         int count = 0;
-        for (Person person : PersonRegistry) {
-            if (person.getAge() >= 18 && person.getAge() <= 27 && person.getGender() == 'm' && person.getAddress().getCity().equals(nameCity)) {
+        for (Person person : personRegistry) {
+            if (isFitPerson(person) && person.getAddress().getCity().equals(nameCity)) {
                 count++;
             }
         }
@@ -28,7 +36,7 @@ public class MIlitaryOffice {
 
     public void findPersonForAge() {
         int count = 0;
-        for (Person person : PersonRegistry) {
+        for (Person person : personRegistry) {
             if (person.getAge() >= 25 && person.getAge() <= 27 && person.getGender() == 'm') {
                 count++;
             }
@@ -38,8 +46,8 @@ public class MIlitaryOffice {
 
     public void findPersonForName(String name) {
         int count = 0;
-        for (Person person : PersonRegistry) {
-            if (person.getAge() >= 18 && person.getAge() <= 27 && person.getGender() == 'm' && person.getName().equals(name)) {
+        for (Person person : personRegistry) {
+            if (isFitPerson(person) && person.getName().equals(name)) {
                 count++;
             }
         }

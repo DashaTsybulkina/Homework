@@ -23,7 +23,7 @@ public class Main {
             Address address = new Address(country, city);
             personRegistry[i] = new Person(name, age, gender, address);
         }
-        MIlitaryOffice mIlitaryOffice = new MIlitaryOffice(personRegistry);
+        MilitaryOffice mIlitaryOffice = new MilitaryOffice(personRegistry);
         mIlitaryOffice.findFitPerson();
         mIlitaryOffice.findPersonForAge();
         mIlitaryOffice.findPersonForCity("Минск");
