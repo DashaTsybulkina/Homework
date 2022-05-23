@@ -6,7 +6,7 @@ public class Main {
         Car car = new Car(new GasTank(36, 60), new Engine("Дизельный", 3));
         System.out.println(car);
         car.start();
-        car.mute();
+        car.stop();
         car.drive();
         car.start();
         car.drive();

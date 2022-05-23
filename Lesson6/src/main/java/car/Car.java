@@ -4,27 +4,14 @@ public class Car {
     private GasTank gasTank;
     private Engine engine;
     private int countAllDistance;
-    private final int DISTANCE = 100;
-    private final int FINAL_OF_DISTANCE = 20;
+    private static final int DISTANCE = 100;
+    private static final int COUNT_GASOLINE_USED = 20;
     private String brand;
     private String yearsOfRelease;
 
     public Car(GasTank gasTank, Engine engine) {
         this.gasTank = gasTank;
         this.engine = engine;
-    }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                " gasTank=" + gasTank +
-                ", engine=" + engine +
-                ", countAllDistance=" + countAllDistance +
-                ", DISTANCE=" + DISTANCE +
-                ", FINAL_OF_DISTANCE=" + FINAL_OF_DISTANCE +
-                ", brand='" + brand + '\'' +
-                ", yearsOfRelease='" + yearsOfRelease + '\'' +
-                '}';
     }
 
     public Car(GasTank gasTank, Engine engine, int countAllDistance, String brand, String yearsOfRelease) {
@@ -57,7 +44,7 @@ public class Car {
     }
 
     public void start() {
-        if (gasTank.getCountGas() - FINAL_OF_DISTANCE > 0) {
+        if (gasTank.getCountGas() > 0) {
             engine.setStart(true);
             System.out.println("Car is starting");
         } else {
@@ -67,21 +54,38 @@ public class Car {
 
     public void drive() {
         if (engine.getIsStart()) {
-            System.out.println("Car went");
+            if (gasTank.getCountGas() - COUNT_GASOLINE_USED > 0) {
+                System.out.println("Car went");
+            } else {
+                System.out.println("Not enough gas for drive");
+            }
         } else {
             System.out.println("Engine is not working. Car can`t drive");
         }
     }
 
-    public void mute() {
+    public void stop() {
         engine.setStart(false);
         System.out.println("Car is muted");
         countAllDistance += DISTANCE;
-        gasTank.setCountGas(gasTank.getCountGas() - FINAL_OF_DISTANCE);
+        gasTank.setCountGas(gasTank.getCountGas() - COUNT_GASOLINE_USED);
         System.out.println("Car was driving" + DISTANCE + " km, in tank left " + gasTank.getCountGas() + " l");
     }
 
     public void getCountOfDistance() {
         System.out.println("Distance is " + countAllDistance);
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                " gasTank=" + gasTank +
+                ", engine=" + engine +
+                ", countAllDistance=" + countAllDistance +
+                ", DISTANCE=" + DISTANCE +
+                ", FINAL_OF_DISTANCE=" + COUNT_GASOLINE_USED +
+                ", brand='" + brand + '\'' +
+                ", yearsOfRelease='" + yearsOfRelease + '\'' +
+                '}';
     }
 }
