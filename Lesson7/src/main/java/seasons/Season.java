@@ -3,7 +3,7 @@ package seasons;
 import lombok.Getter;
 
 @Getter
-public enum Seasons {
+public enum Season {
     WINTER(-10, "Winter"),
     SUMMER(17, "Summer") {
         @Override
@@ -17,11 +17,11 @@ public enum Seasons {
     private int averageTemperature;
     private String seasonsName;
 
-    Seasons(int averageTemperature) {
+    Season(int averageTemperature) {
         this.averageTemperature = averageTemperature;
     }
 
-    Seasons(int averageTemperature, String seasonsName) {
+    Season(int averageTemperature, String seasonsName) {
         this.averageTemperature = averageTemperature;
         this.seasonsName = seasonsName;
     }
@@ -30,7 +30,7 @@ public enum Seasons {
         return " Холодное время года ";
     }
 
-    public static void favoriteSeasons(Seasons favoriteSeasons) {
+    public static void printFavoriteSeasons(Season favoriteSeasons) {
         switch (favoriteSeasons) {
             case AUTUMN:
                 System.out.println("Я люблю Осень");

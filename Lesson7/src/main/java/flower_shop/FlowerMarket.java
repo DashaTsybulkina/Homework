@@ -10,7 +10,7 @@ public class FlowerMarket {
 
     public FlowerMarket() {
         FlowerType[] flowerType = FlowerType.values();
-        allFlower = new String[6][2];
+        allFlower = new String[flowerType.length][2];
         int count = 0;
         for (FlowerType flower : flowerType) {
             allFlower[count][0] = flower.getName();
