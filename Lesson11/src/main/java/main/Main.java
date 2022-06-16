@@ -10,6 +10,7 @@ public class Main {
 
         //task1
         System.out.println(textFormatter.cutSubstring("Вырезать подстроку из строки ", 'а', 'о'));
+        System.out.println(textFormatter.cutSubstring("dsaalammmflaaam", 'a', 'l'));
 
         //task2
         System.out.println(textFormatter.replaceChar("0npdc0dc00sdcscs0"));
@@ -17,13 +18,13 @@ public class Main {
         //task3
         String[] arrString = {"казак", "доход", "мама", "мороз"};
         for (String string : arrString) {
-            if (textFormatter.palindromeSearch(string)) {
+            if (textFormatter.hasPalindromeInSentence(string)) {
                 System.out.println(string);
             }
         }
 
         //task4
-        String[] sentences = textFormatter.splitSentences("Программи́рование — процесс и искусство создания компьютерных программ с помощью языков программирования[1][2]." +
+        String[] sentences = textFormatter.getSentences("Программи́рование — процесс и искусство создания компьютерных программ с помощью языков программирования[1][2]." +
                 "Программирование сочетает в себе элементы искусства, науки, математики и инженерии." +
                 "В узком смысле слова, программирование рассматривается как кодирование — реализация одного или нескольких взаимосвязанных алгоритмов на некотором языке программирования. В более широком смысле, программирование — процесс создания программ, то есть разработка программного обеспечения." +
                 "Большая часть работы программиста связана с написанием исходного кода на одном из языков программирования");
