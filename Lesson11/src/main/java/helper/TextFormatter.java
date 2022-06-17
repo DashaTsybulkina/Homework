@@ -20,27 +20,28 @@ public class TextFormatter {
     }
 
     public String returnTwoCharacters(String word) {
-        return word.charAt(word.length() / 2 - 1) + (word.charAt(word.length() / 2) + "\n");
+       return word.substring(word.length() / 2 - 1, word.length() / 2 + 1);
     }
 
-    public String[] splitSentences(String text) {
+    public String[] getSentences(String text) {
         return text.split("\\.");
     }
 
     public void examinationSentences(String[] sentences) {
         for (String sentence : sentences) {
-            if (palindromeSearch(sentence) || (wordCount(sentence) >= 3 && wordCount(sentence) <= 5)) {
+            int result = getWordCount(sentence);
+            if (hasPalindromeInSentence(sentence) || (result >= 3 && result <= 5)) {
                 System.out.println(sentence);
             }
         }
     }
 
-    public int wordCount(String text) {
+    public int getWordCount(String text) {
         String[] words = text.split(" ");
         return words.length;
     }
 
-    public boolean palindromeSearch(String text) {
+    public boolean hasPalindromeInSentence(String text) {
         String[] words = text.split(" ");
         for (String word : words) {
             if (word.length() > 1) {

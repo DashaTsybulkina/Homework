@@ -1,5 +1,6 @@
 package regex;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,12 +19,12 @@ public class Main {
         while (matcher2.find()) {
             System.out.println(versions.substring(matcher2.start(), matcher2.end()));
         }
-        System.out.println(text2.split("[A-Za-z]+\\b").length - 1);
+        System.out.println(Arrays.toString(text2.split("([А-Яа-яёЁ]+)|\\s+|([A-Za-z]*[0-9]+)")));
         System.out.println(validate("erfft"));
     }
 
     public static boolean validate(String str) {
-        return str.matches("[a-z[1][5]]{4,20}\\b");
+        return str.matches("[a-z15]{4,20}");
     }
 }
 
