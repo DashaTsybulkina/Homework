@@ -1,20 +1,14 @@
 package model;
 
-import lombok.NoArgsConstructor;
-
 import java.util.List;
 
-@NoArgsConstructor
 public class TextFormatter {
 
     public boolean isPalindrome(String line) {
         StringBuilder buffer = new StringBuilder(line);
         buffer.reverse();
-        if (line.equalsIgnoreCase(buffer.toString())) {
-            return true;
-        } else {
-            return false;
-        }
+        return line.equalsIgnoreCase(buffer.toString());
+
     }
 
     public int wordCount(String text) {
@@ -36,7 +30,7 @@ public class TextFormatter {
         return false;
     }
 
-    public static void checkText(List<String> blackList, String[] sentences) {
+    public void checkText(List<String> blackList, String[] sentences) {
         int counterWrongSentences = 0;
         for (String sentence : sentences) {
             if (checkSentence(blackList, sentence)) {
@@ -51,9 +45,9 @@ public class TextFormatter {
         }
     }
 
-    private static boolean checkSentence(List<String> blackList, String sentence) {
+    private boolean checkSentence(List<String> blackList, String sentence) {
         for (String word : blackList) {
-            if ((sentence.toLowerCase()).contains(word)) {
+            if (sentence.toLowerCase().contains(word)) {
                 return true;
             }
         }
