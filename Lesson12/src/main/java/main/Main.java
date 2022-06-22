@@ -44,12 +44,12 @@ public class Main {
             while ((lineText = reader.readLine()) != null) {
                 text += lineText;
             }
-            String[] sentences = text.split("\\.|\\?|!");
+            String[] sentences = text.split("[.?!]");
             ArrayList<String> words = new ArrayList<>();
             while ((lineText = readerBlackList.readLine()) != null) {
                 words.add(lineText.toLowerCase());
             }
-            TextFormatter.checkText(words, sentences);
+            formatter.checkText(words, sentences);
 
         } catch (Exception e) {
             e.printStackTrace();
