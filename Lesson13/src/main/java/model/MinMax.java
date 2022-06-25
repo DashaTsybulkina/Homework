@@ -6,9 +6,10 @@ public class MinMax<T extends Number> {
     private final T[] arrayOfNumbers;
 
     public MinMax(T[] array) throws Exception {
-        if (array != null) {
+        if (array != null && array.length > 0) {
             this.arrayOfNumbers = array;
         } else {
+            System.out.println("Массив не может быть пустым");
             throw new Exception();
         }
     }

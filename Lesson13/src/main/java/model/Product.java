@@ -10,8 +10,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Product {
-    Integer ID;
-    String name;
-    Integer price;
-    long created;
+    private Integer id;
+    private String name;
+    private Integer price;
+    private long created;
 }
