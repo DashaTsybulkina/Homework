@@ -11,13 +11,18 @@ import java.util.Scanner;
 public class Main {
     static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         readCatalog(new File("D://TMS"));
         GenericClass<String, Animal, Integer> genericClass = new GenericClass<>("String", new Animal(), 1);
         genericClass.printInformationClass();
 
         Integer[] numbersInteger = {112, 25, 65, 2, 23};
-        MinMax<Integer> number = new MinMax<>(numbersInteger);
+        MinMax<Integer> number = null;
+        try {
+            number = new MinMax<>(numbersInteger);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         System.out.println("Максимальный элемент " + number.getMax());
         System.out.println("Минимальный элемент " + number.getMin());
         number.getInfo();
@@ -32,12 +37,16 @@ public class Main {
     }
 
     public static void readCatalog(File directory) {
-        for (File file : Objects.requireNonNull(directory.listFiles())) {
-            if (file.isFile()) {
-                System.out.println(file + file.getName());
-            } else {
-                readCatalog(file);
+        if (directory.exists()) {
+            for (File file : Objects.requireNonNull(directory.listFiles())) {
+                if (file.isFile()) {
+                    System.out.println(file + file.getName());
+                } else {
+                    readCatalog(file);
+                }
             }
+        } else {
+            System.out.println("Директория не найдена");
         }
     }
 
@@ -63,10 +72,10 @@ public class Main {
                 }
             }
             switch (choice) {
-                case (1) -> sort(shop);
-                case (2) -> shop.addProduct(createProduct());
-                case (3) -> shop.deleteProduct(getIdProduct());
-                case (4) -> shop.editProduct(createProduct());
+                case 1 -> sort(shop);
+                case 2 -> shop.addProduct(createProduct());
+                case 3 -> shop.deleteProduct(getIdProduct());
+                case 4 -> shop.editProduct(createProduct());
             }
 
         }
@@ -91,15 +100,15 @@ public class Main {
         }
         ArrayList<Product> products = shop.getProducts();
         switch (choice) {
-            case (1) -> {
+            case 1 -> {
                 products.sort(Comparator.comparingInt(Product::getPrice));
                 System.out.println(products);
             }
-            case (2) -> {
+            case 2 -> {
                 products.sort(Comparator.comparingInt(Product::getPrice).reversed());
                 System.out.println(products);
             }
-            case (3) -> {
+            case 3 -> {
                 products.sort(Comparator.comparingLong(Product::getCreated).reversed());
                 System.out.println(products);
             }
